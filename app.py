@@ -7,6 +7,7 @@ movie_list = movies_df['title'].values
 
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 
+st.set_page_config(page_title="Movies Recommendation", page_icon="🍿", layout="wide")
 
 def fetch_poster(id):
     response = requests.get("https://api.themoviedb.org/3/movie/{}?api_key=b25587cadc014bbcf38f0b9c3d577fb0".format(id))
@@ -29,7 +30,7 @@ def recommend(selected_movie, movies_df):
     return recommended_movies , recommended_movies_poster
 
 
-st.title('Movie Recommender System')
+st.title('Movie Recommender System 🍿👀🎞')
 selected_movie = st.selectbox('Select your movie', movie_list)
 if st.button('Recommend'):
     names, posters = recommend(selected_movie, movies_df)
